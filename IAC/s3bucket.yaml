@@ -14,6 +14,11 @@ Resources:
       WebsiteConfiguration:
         IndexDocument: index.html
         ErrorDocument: error.html
+      Tags:
+        - Key: yor_trace
+          Value: c7a9755f-ba4e-430c-935f-b5cc157d14d0
+        - Key: yor_name
+          Value: S3Bucket
     DeletionPolicy: Retain
 Outputs:
   WebsiteURL:
