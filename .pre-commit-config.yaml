@@ -1,0 +1,18 @@
+repos:
+#  -   repo: https://github.com/pre-commit/pre-commit-hooks
+#      rev: v2.3.0
+#      hooks:
+#        -   id: check-yaml
+#        -   id: end-of-file-fixer
+#        -   id: trailing-whitespace
+  -   repo: https://github.com/bridgecrewio/checkov.git
+      rev: ''
+      hooks:
+        -   id: checkov_diff
+            verbose: true
+            args: [
+              --compact,
+              --quiet,
+              --hard-fail-on, "CKV_AWS_79",
+              -f
+            ]
