@@ -16,6 +16,6 @@ repos:
               --bc-api-key, "21097aee-b591-4a6a-9ea7-8001209bbd39::6Dz9Iybsmci8HpehO7tkXMzCRTU=",
               --prisma-api-url, "https://api0.prismacloud.io/",
               --repo-id, "kwan-pc-idea/badCode-GH",
-              --hard-fail-on, "CRITICAL",
+              --hard-fail-on, "CRITICAL,HIGH",
               -f
             ]
