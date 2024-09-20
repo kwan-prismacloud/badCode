@@ -13,7 +13,7 @@ repos:
             args: [
               --compact,
               --quiet,
-              --bc-api-key, "21097aee-b591-4a6a-9ea7-8001209bbd39::6Dz9Iybsmci8HpehO7tkXMzCRTU=",
+              --bc-api-key, "******",
               --prisma-api-url, "https://api0.prismacloud.io/",
               --repo-id, "kwan-pc-idea/badCode-GH",
               --hard-fail-on, "CRITICAL,HIGH",
