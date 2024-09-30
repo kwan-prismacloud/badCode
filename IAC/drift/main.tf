@@ -16,6 +16,8 @@ resource "aws_s3_bucket" "drifted_bucket" {
   # Tags for the S3 bucket
   tags = {
     Name      = "DriftedBucket"
+    yor_name  = "drifted_bucket"
+    yor_trace = "9db6d040-6e69-42eb-869e-acd77e573430"
   }
 }
 
