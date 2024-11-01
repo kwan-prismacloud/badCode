@@ -1,0 +1,57 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: log4shell
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/group.name: eks-pcs-group
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/healthcheck-path: /actuator/health/liveness
+spec:
+  ingressClassName: alb
+  rules:
+    - http:
+        paths:
+          - path: /log4shell
+            pathType: Prefix
+            backend:
+              service:
+                name: log4shell-svc
+                port:
+                  number: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: log4shell-svc
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8080
+      targetPort: 8080
+      name: http
+  selector:
+    app: "log4shell-vuln-app"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "log4shell"
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: log4shell-vuln-app
+  template:
+    metadata:
+      labels:
+        app: log4shell-vuln-app
+    spec:
+      containers:
+        - name: log4shell-vuln-app
+          image: kathywan/log4shell-vulnerable-app:latest
+          ports:
+            - containerPort: 8080
